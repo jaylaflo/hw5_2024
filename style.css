@@ -1,0 +1,203 @@
+/* Apply styles for default mobile view */
+
+@keyframes logoAnimation { /* Define keyframes for logo animation */
+    0% {
+      width: 25px; /* Set initial width of logo */
+      opacity: 0;   /* Set initial opacity of logo */
+    }
+    100% {
+      width: 475px;     /* Set final width of logo */
+      opacity: 1;    /* Set final opacity of logo */
+    }
+  }
+  header {
+    display: flex;
+    justify-content: space-between; /* Add space between header elements so they flex appropriately */
+    align-items: center;
+    padding: 20px;
+  }
+  .nav_links {
+    display: flex;
+    list-style-type: none; /* Remove default list style */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav_links a:visited { /* Style visited links to stay the same color*/
+    color: blue;
+  }
+  .card > header {
+    background-color: #288088;
+    border: 2px solid #45ADAD;
+    padding: 20px 0; /* top bottom padding */
+    border-top-left-radius: 50px; /* Add border radius to top left of card */
+    border-top-right-radius: 50px; /* Add border radius to top right of card */
+  }
+  .card > header:first-child {
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
+}
+.card {
+    flex: 0 0 450px;
+    border-top-left-radius: 60px; /* Add higher border radius to top left of card to remove white corners*/
+    border-top-right-radius: 60px; /* Add higher border radius to top right of card to remove white corners*/
+}
+.pricing {
+    display: flex;
+    justify-content: center; /* Center pricing elements */
+    align-items: center;    /* Align pricing elements */
+    flex-wrap: wrap; /* Wrap pricing elements */
+}
+.gallery img {
+    border: 10px solid #50C7C7;
+    margin: 10px; /* Add margin to gallery images */
+    width: 300px; /* Set width of gallery images */
+  }
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  #logo {
+    width: 25px;
+    opacity: 0;
+    animation: logoAnimation 5s forwards; /* Apply logo animation */
+  }
+/* Apply styles for tablet/desktop */
+@media screen and (min-width: 900px) {
+    @keyframes logoAnimation {
+        0% {
+          width: 25px;
+          opacity: 0;
+        }
+        100% {
+          width: 475px;
+          opacity: 1;
+        }
+      }
+      header {
+        display: flex;
+        justify-content: space-between; /* Add space between header elements */
+        flex-direction: row; /* Align header elements horizontally */
+        align-items: center;
+        margin: auto;
+        padding: 0 5%; /* Add right and left padding to header */
+      }
+      .nav_links {
+        display: flex;
+        flex-direction: row; /* Align navigation links horizontally */
+        list-style-type: none;
+        flex-wrap: wrap;
+      }
+      .nav_links a:visited {
+        color: blue;
+      }
+      .card > header {
+        background-color: #288088;
+        border: 2px solid #45ADAD;
+        padding: 20px 0;
+        border-top-left-radius: 50px;
+        border-top-right-radius: 50px;
+      }
+      .card > header:first-child {
+        border-top-left-radius: 60px;
+        border-top-right-radius: 60px;
+    }
+    .card {
+        flex: 0 0 275px;
+        border-top-left-radius: 60px;
+        border-top-right-radius: 60px;
+    }
+    .pricing {
+        display: flex;
+        justify-content: space-around; /* Add space around pricing elements */
+        align-items: center;
+        flex-wrap: wrap;
+        margin-left: 12%;
+        margin-right: 12%;
+    }
+    .gallery img {
+        border: 10px solid #50C7C7;
+        margin: 1px; /* decrease margin of gallery images to bring them closer*/
+        width: 300px;
+      }
+      .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-left: 10%;
+        margin-right: 10%;
+      }
+      #logo {
+        margin-right: auto;  /* Align logo to the left */
+        width: 25px;
+        opacity: 0;
+        animation: logoAnimation 5s forwards;
+      }
+      body > :first-child { /* fix the logo and nav to the top when scrolling */
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+      }
+      h1 { /* Add padding to h1 so that logo an nav don't overlap*/
+        padding-top: 100px;
+    }
+}
+@media (prefers-reduced-motion: reduce) { /* Disable animation for users who prefer reduced motion */
+    #logo {
+    width: 25px;
+    opacity: 0;
+    animation: logoAnimation 0s forwards; /* Disable animation without making logo disappear */
+    }
+  }
+
+  /* Apply styles for printing in portrait mode */
+@media print and (orientation: portrait) {
+    body {
+      font-family: Arial, Helvetica, sans-serif; /* Change font to Arial with a backup value of Helvetica */
+      background-image: none; /* Remove background image */
+      min-height: 100%; /* Set minimum height to 100% */
+    }
+    header {
+        display: flex;
+        flex-direction: column; /* Align header elements vertically */
+        justify-content: space-between; /* Add space between header elements */
+        align-items: center; /* Center header elements */
+        padding: 0; /* Remove padding */
+        margin: 0   /* Remove margin */
+    }
+    .nav_links {
+        display: flex;
+       flex-direction: row; /* Align navigation links horizontally */
+       justify-content: space-between; /* Add space between navigation links */
+    }
+    .nav_links li {
+        margin: 0 100px; /* Add margin to navigation links to make them more spread apart */
+    }
+    .pricing {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end; /* Align pricing elements along the bottom */
+        flex-wrap: nowrap; /* Prevent wrapping so they're all in a row*/
+        flex-grow: 1; /* Allow elements to grow */
+    }
+    .card {
+        flex-basis: 325px; /* Set flex basis to 325px */
+        border: 2px solid #45ADDD; /* Solid border with specified color */
+    }
+    .gallery {
+        display: none; /* Hide gallery */
+    }
+    #gallery {
+        display: none; /* Hide gallery heading*/
+    }
+    .card ul li:nth-child(2)::after { /* Add thumbs-up icon after second ul list item */
+        content: "\1F44D"; /* Unicode character for thumbs-up icon */
+        display: inline-block; /* Display thumbs-up icon inline with text*/
+    }
+
+    }
+  
